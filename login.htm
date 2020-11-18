@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<style>
+body {
+  margin: 0em;
+}
+
+#tabs {
+    max-width: 90em;
+}
+
+#tabs h2 {
+    margin: 1em 0 0;
+}
+
+#tabs h2:focus {
+    outline: 0;
+    /* If you're removing the outline, you must add something as good or better! */
+    text-decoration: underline;
+}
+
+.tabsList {
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding-left: 2.35em;
+}
+
+.tabsList li {
+    position: relative; /*for z-index*/
+    float: left;
+    margin: 0 .5em 0 0;
+    z-index: 1;
+}
+
+.tabsList li a {
+    position: relative;
+    top: 4px;
+    float: left;
+    overflow: hidden;
+    font-weight: normal;
+    text-shadow: none;
+    background: #fff;
+    color: #444;
+    text-decoration: none;
+    margin: .5em 0 0;
+    padding: .5em .5em .35em;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 2px 2px 0;
+    -moz-border-radius-topleft: 0.5em;
+    -moz-border-radius-topright: 0.5em;
+    -webkit-border-top-left-radius: 0.5em;
+    -webkit-border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    cursor: pointer;
+}
+
+.tabsList li a:link { border-color: #ccc; }
+
+.tabsList li a:hover,
+.tabsList li a:focus,
+.tabsList li a:active {
+    border-color: #999;
+    text-shadow: 0 1px 1px rgba(0, 0, 0,.2);
+}
+
+.tabsList li a:active { top: 2px; }
+
+.tabsList li.current { z-index: 10; }
+
+.tabsList li.current a {
+    top: 2px;
+    font-weight: bold;
+    color: #e00122;
+    background: #fafafa;
+    border-color: #e00122;
+    text-shadow: 0 1px 1px rgba(0, 0, 0,.2);
+}
+
+.tabsList li.current a:hover,
+.tabsList li.current a:focus {
+    color: #fff;
+    background-color: #e00122;
+}
+
+.tabsList li.current a:focus { outline: 1px dotted #444; }
+
+.tabsList a span {
+    position: absolute;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.tabPanel {
+    position: relative;  /*for z-index*/
+    display: block;
+    visibility: visible;
+    clear: left;
+    overflow: auto;
+    padding: .5em 3em 2em;
+    border: 2px solid #999;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    z-index: 5;
+    color: #333;
+    background-color: #fafafa;
+}
+
+.tabPanel:focus { outline: 1px dotted #999; }
+
+.tabPanel h2 { display: inline-block; }
+
+.tabPanel h2:focus { outline: 1px dotted #999; }
+    /* UC Styes*/
+    #contentwrap{
+        margin-left:1.5em;
+    }
+#footer {
+	font-size: 90%;
+	font-weight:300;
+	background-color: #E00122;
+	padding: 5px;
+	margin-top: 15px;
+	color: #FFF;
+	text-align: left;
+    padding-left:1.5em;
+}
+#footer a {
+	background-color: transparent;
+	text-decoration: underline;
+	color: #FFF;
+	text-align: left;
+}
+#headerwrap{
+	height:65px;
+	width:100%;
+	background-color:#e00122;
+	padding: 5px;
+	color:white;
+	font-size:100%;
+	font-weight: 800;
+		}
+
+#header{
+	padding-top:10px;
+	padding-left:40px;
+	background-color: #AB1013;	
+	color:white; 
+	font-weight:800;
+	height:30px;	
+		}	
+#header a{
+	color:white;
+	text-decoration: none;
+		
+	}
+.tablewrap {
+border: thin #A22224 solid;
+	padding:20px;
+    
+
+		}
+.button1{
+    background-color: #e00122;
+    color: white;
+    padding-left:50px;
+	padding-right:50px;
+	padding-top:10px;
+	padding-bottom:10px;
+    border: none;
+    font-weight: 900;
+    font-size: 80%;
+	margin-top:30px;
+text-decoration: none;
+		}
+.button1 hover {
+    background-color: #ccc;
+}
+    .button1 a{color:white;
+        text-decoration: none;
+    }
+    
+    </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+    <div id="pagewrap">
+	<div id="headerwrap"><a href="https://uc.edu/"><img src="https://libapps.libraries.uc.edu/offsite/UCLogo.png" width="256" height="54" alt="UC Logo"/></a></div>
+  <div id ="header">
+		<a href="https://libraries.uc.edu/">Libraries</a></div>
+    <div id="contentwrap">
+        <h1>UC Libraries - Proxy Login</h1>
+    
+<div id="tabs">
+<ul>
+<li><a href="#uc">UC</a></li>
+<li><a href="#affil">Affiliates</a></li>
+<li><a href="#guests">Guests</a></li>
+</ul>
+<div>
+<h2 id="uc">UC Login For Current Faculty, Staff and Students Only</h2>
+ <ul>
+                <li>You are connecting to a UC website that requires authentication.</li>
+                <li>Please <strong>enter your <span class="hblack">UC Central Login Service Username</span> and<span class="hblack"> Password (6+2) </span></strong> to continue. </li>
+                <li><strong><span class="hblack">First time login PASSWORD is</span></strong><span>: <span style="color:#E00122;font-family:'Arial Black';">Uc!mmddyyyy</span>- <em class="hblack">where mmddyyyy is your full
+                  date of birth. Ex: 12011989</em></span></li>
+                <li><strong>To confirm that your authentication was successful,</strong> check the &quot;Address&quot; box at the top of your browser. </li>
+The URL (Universal Resource Locator) will look something like the following:
+<p> <b>https://www.libraries.uc.edu.proxy.libraries.uc.edu<br>
+  <br>
+</b></p>
+              </ul>
+		 <div class ="tablewrap">
+	       <p>&nbsp;</p>
+		     <p><em>Please enter all required information:</em>
+	       </p>
+			  <form action="https://login.proxy.libraries.uc.edu/login" method="post">
+				 <table width="Y" align="left" class ="login_table" border="0px">
+                  <tr>
+                    <td colspan="3" valign="top"><input name="url" value="^U" type="hidden" /></td>
+                  </tr>
+                  <tr>
+                    <td valign="top"><b>Username:</b><br />
+                      <span style="font-size: 95%">(UC 6 + 2)</span></td>
+                    <td align="left" valign="top"><input name="user" type="text" class ="entry"/>
+                     </td>
+                    <td valign="top" width="298"><a href="https://www.uc.edu/UCAuthenticate/GetMyUsername.aspx" target="_blank">Get My Username</a></td>
+                  </tr>
+                  <tr>
+                    <td valign="top"><b>Password:</b></td>
+                    <td valign="top" width="205"><input name="pass" type="password" size="20%" class="entry"/>
+                      <span id="PasswordReq" style="color: Red; display: none"><br />
+                      Required</span></td>
+                    <td valign="top" ><a tabindex="10" href="https://www.uc.edu/PSS/jsps/pwdmgt/ForgotPassword.jsf" target="_blank">Forgot Password</a></td>
+                  </tr>
+                  <tr>
+					<br>
+                    <td colspan="3" align="left"><input type="submit" class="button1" value="LOG IN" tabindex="2" /></td>
+</tr>
+                </table>
+              </form>
+		
+              <br />
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+		</div>
+              <p><em>By using this service you agree to adhere to <a href="http://www.uc.edu/ucit/itgenpolicy.html" target="_blank">UC computing
+                policies and guidelines</a></em></p>
+              <div class="bothelp" style="text-align:left;">
+                <p><strong>Library Question?</strong></p>
+                <ul>
+                  <li><a href="https://libraries.uc.edu/about/contact.html">Visit our Contact Us Page</a></li>
+                </ul>
+                <p><strong>Is this your first time logging in?</strong></p>
+                <ul>
+                  <li>Set up your <a href="http://www.uc.edu/infosec/password/setupnewaccounts.html" target="_blank"> UC Campus Login.</a> </li>
+                  
+                </ul>
+                <p><strong>Password issues, or not sure? Try these links:</strong></p>
+                <ul>
+                  <li><a href="https://www.uc.edu/UCAuthenticate/Help.aspx" target="_blank">Login Help</a></li>
+                  <li><a target="_blank" href="https://www.uc.edu/UCAuthenticate/ChangePassword.aspx"> Change your password?<br />
+                    </a></li>
+                  <li>Set up your <a href="https://www.uc.edu/PSS" target="_blank">Password Self Service</a> profile.</li>
+                  <li> or call (513) 556-HELP (4357)<br />
+                  </li>
+                </ul>
+                <p>In accordance with federal records and privacy laws, accounts can only be reset by the owner of the account. </p>
+                
+                <!--end inner login-->
+                
+                <h3>Important NOTES:</h3>
+                <ul>
+                  <li> To confirm that your authentication was successful, check the &quot;Address&quot; box at the top of your browser. </li>
+                  <li> The URL (Universal Resource Locator) will look something like the following:&nbsp;&nbsp;&nbsp;<b>https://www.libraries.uc.edu<span class="style1">.proxy.</span>libraries.uc.edu</b></li>
+                  <li> As you navigate sites, the displayed URL should always have .proxy.libraries.uc.edu added to it, as in the example above. </li>
+                </ul>
+              </div>
+</div>
+<div>
+<h2 id="affil">Affiliate Login for Registered Library Affiliates</h2>
+	<ul>
+			<li>You are connecting to a UC website that requires authentication.			</li>
+		</ul>
+                  <form action="https://login.proxy.libraries.uc.edu/login" method="post" class="customi">
+                    <input type="hidden" name="url" value="^U" />
+                   
+                        <br />
+						  <div class="tablewrap">
+							  <p><em>Please enter all required information:</em></p> 
+						  <b> UC ID number:</b> 
+                      <input name="user" type="password" class="entry"/>
+                      <br />
+                      <br />
+					  <label for="pass"><b>Last name:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      <input name="pass" type="password" class="entry"/>
+                      <br />
+                      <br />
+                      <input type="submit" class="button1" value="LOG IN" tabindex="2" />
+                      <br />
+                      <br>
+	
+	</div>
+                      
+                  </form>
+          
+      <div class="bothelp">
+                <h3>Important:</h3>
+		 <ul>
+			 <li><p><strong> *You must renew your access to library resource yearly!</strong> For more information, including how to renew, <a href="https://guides.libraries.uc.edu/uchealth">please visit our UC Health guide. </a> </p></li>
+			 <li><strong>Library Question?</strong>
+               <ul>
+                 <li><a href="https://libraries.uc.edu/about/contact.html">Visit our Contact Us Page</a></li>
+               </ul>
+			 </li>
+			 <li>To confirm that your authentication was successful, check the &quot;Address&quot; box at the top of your browser. </li>
+                The URL (Universal Resource Locator) will look something like the following: 
+		  <p> <b>https://www.libraries.uc.edu.proxy.libraries.uc.edu</b></p>
+                <br />
+                 </ul>
+                As you continue to navigate sites, the displayed URL should always have .proxy.libraries.uc.edu added to it, as in the example above. </div>
+</div>
+<div>
+    <h2 id="guests">Guests</h2><p></p>
+		All public users can access the UC Libraries Catalog. However, by publisher requirement, some resources are only available to current UC Faculty, Staff, or Students, or by arrangement as a UC Affiliate. <p>
+    <b>More information on community borrowers can be found at the page, <a href="https://libraries.uc.edu/find-request-borrow/borrow-materials.html"> Information For Commubity Borrowers</a></b></p>
+    <b></b>
+    <p></p>
+    <p></p>
+    
+           <span class="button1"><a href="http://uclid.uc.edu/" >BROWSE THE CATALOG</a></span>
+          
+ <p></p>
+    <p></p> <p></p>
+    <p></p> <p></p>
+    <p></p> <p></p>
+    <p></p> <p></p>
+    <p></p>
+</div>
+</div>
+  </div>            
+<div id="footer">
+        <p><a href="https://libraries.uc.edu/contacts-and-feedback.html" tabindex="5" accesskey="2"><strong>Library Contacts and Feedback</strong></a></p>
+        <p><a href="http://www.uc.edu/alert.html"> Alerts</a> | <a href="http://www.uc.edu/publicsafety/clery/annual-security-report.html">Clery and HEOA Notice</a> | <a href="http://www.uc.edu/about/policies/non-discrimination.html">Notice of Non-Discrimination</a> | <a href="http://www.uc.edu/ucit/community/accessibility/eAccessibility-form.html">eAccessibiility Concern</a> | <a href="http://commercialization.uc.edu/copyright-infringement">Copyright Information</a> </p>
+        <p>© 2018 University of Cincinnati Libraries<br>
+      </p>
+      <p>
+        PO Box 210033, 
+      Cincinnati, Ohio 45221-0033 </p>
+        <p>&nbsp;</p>
+        <br />
+      </div>
+	
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script id="rendered-js">
+$(function () {
+  var tabs = $("#tabs");
+
+  // For each individual tab DIV, set class and aria-hidden attribute, and hide it
+  $(tabs).find("> div").attr({
+    "class": "tabPanel",
+    "aria-hidden": "true" }).
+  hide();
+
+  // Get the list of tab links
+  var tabsList = tabs.find("ul:first").attr({
+    "class": "tabsList" });
+
+
+  // For each item in the tabs list...
+  $(tabsList).find("li > a").each(
+  function (a) {
+    var tab = $(this);
+
+    // Create a unique id using the tab link's href
+    var tabId = "tab-" + tab.attr("href").slice(1);
+
+    // Assign tab id and aria-selected attribute to the tab control, but do not remove the href
+    tab.attr({
+      "id": tabId,
+      "aria-selected": "false" }).
+    parent().attr("role", "presentation");
+
+    // Assign aria attribute to the relevant tab panel
+    $(tabs).find(".tabPanel").eq(a).attr("aria-labelledby", tabId);
+
+    // Set the click event for each tab link
+    tab.click(
+    function (e) {
+      var tabPanel;
+
+      // Prevent default click event
+      e.preventDefault();
+
+      // Change state of previously selected tabList item
+      $(tabsList).find("> li.current").removeClass("current").find("> a").attr("aria-selected", "false");
+
+      // Hide previously selected tabPanel
+      $(tabs).find(".tabPanel:visible").attr("aria-hidden", "true").hide();
+
+      // Show newly selected tabPanel
+      tabPanel = $(tabs).find(".tabPanel").eq(tab.parent().index());
+      tabPanel.attr("aria-hidden", "false").show();
+
+      // Set state of newly selected tab list item
+      tab.attr("aria-selected", "true").parent().addClass("current");
+
+      // Set focus to the first heading in the newly revealed tab content
+      tabPanel.children("h2").attr("tabindex", -1).focus();
+    });
+
+  });
+
+
+  // Set keydown events on tabList item for navigating tabs
+  $(tabsList).delegate("a", "keydown",
+  function (e) {
+    var tab = $(this);
+    switch (e.which) {
+      case 37:case 38:
+        if (tab.parent().prev().length != 0) {
+          tab.parent().prev().find("> a").click();
+        } else {
+          $(tabsList).find("li:last > a").click();
+        }
+        break;
+      case 39:case 40:
+        if (tab.parent().next().length != 0) {
+          tab.parent().next().find("> a").click();
+        } else {
+          $(tabsList).find("li:first > a").click();
+        }
+        break;}
+
+  });
+
+
+  // Show the first tabPanel
+  $(tabs).find(".tabPanel:first").attr("aria-hidden", "false").show();
+
+  // Set state for the first tabsList li
+  $(tabsList).find("li:first").addClass("current").find(" > a").attr({
+    "aria-selected": "true",
+    "tabindex": "0" });
+
+});
+//# sourceURL=pen.js
+    </script>
+</div></body>
+</html>
